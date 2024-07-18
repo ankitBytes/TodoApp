@@ -43,7 +43,7 @@ cd todo-list-app
             <pre><code>npm start</code></pre>
             <p>Using yarn:</p>
             <pre><code>yarn start</code></pre>
-            <p>The application will start and can be accessed at <code>http://localhost:3000</code> in your web browser.</p>
+            <p>The application will start and can be accessed at <code>https://gregarious-churros-f32ccf.netlify.app/</code> in your web browser.</p>
         </li>
     </ol>
 
