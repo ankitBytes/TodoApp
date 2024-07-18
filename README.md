@@ -72,7 +72,6 @@ cd todo-list-app
 
 <h3>Project Structure</h3>
     <ul>
-        <li><code>src/components</code>: Contains the individual components of the application.</li>
         <li><code>src/App.js</code>: Main application component.</li>
         <li><code>src/index.js</code>: Entry point of the application.</li>
         <li><code>public</code>: Contains the static files for the application.</li>
@@ -82,7 +81,6 @@ cd todo-list-app
     <ul>
         <li>React</li>
         <li>Material-UI</li>
-        <li><code>@mui/icons-material</code></li>
     </ul>
 
 <h3>Contributing</h3>
