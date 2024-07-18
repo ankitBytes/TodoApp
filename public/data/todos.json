@@ -1,0 +1,43 @@
+[
+    {
+      "id": 1,
+      "text": "Sample Todo",
+      "status": "onGo",
+      "moment": {
+        "time": "10:00 AM",
+        "day": "Mon",
+        "date": "Jul 17, 2024"
+      }
+    },
+    {
+      "id": 1,
+      "text": "Sample Todo",
+      "status": "onGo",
+      "moment": {
+        "time": "10:00 AM",
+        "day": "Mon",
+        "date": "Jul 17, 2024"
+      }
+    },
+    {
+      "id": 1,
+      "text": "Sample Todo",
+      "status": "done",
+      "moment": {
+        "time": "10:00 AM",
+        "day": "Mon",
+        "date": "Jul 17, 2024"
+      }
+    },
+    {
+      "id": 1,
+      "text": "Sample Todo",
+      "status": "drop",
+      "moment": {
+        "time": "10:00 AM",
+        "day": "Mon",
+        "date": "Jul 17, 2024"
+      }
+    }
+  ]
+  

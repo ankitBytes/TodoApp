@@ -9,6 +9,7 @@ import {
   Paper,
   Divider,
   Stack,
+  FormLabel,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -126,7 +127,90 @@ const TodoContainer = ({ listID, todo, setToDos }) => {
   );
 };
 
-function App() {
+const Header = () => {
+  const getDay = () => {
+    const currDate = new Date();
+    const dayNames_full = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const day_full = dayNames_full[currDate.getDay()];
+    const dayNames_short = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const day_short = dayNames_short[currDate.getDay()];
+    return { full: day_full, short: day_short };
+  };
+  return (
+    <Box sx={{ textAlign: "center", marginBottom: 4 }}>
+      <Typography variant="h3" component="h1" className="gradient-text1">
+        ToDo List
+      </Typography>
+      <Typography variant="h5" component="h2">
+        Hey, it's <span className="gradient-text2">{getDay()?.full}</span>
+      </Typography>
+    </Box>
+  );
+};
+
+const Login = ({ setUserAuthenticated }) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Hardcoded credentials for demo purposes
+    const validUsername = "user";
+    const validPassword = "password";
+
+    if (username === validUsername && password === validPassword) {
+      setUserAuthenticated(true);
+      localStorage.setItem("userAuthenticated", "true");
+    } else {
+      alert("Invalid credentials");
+    }
+  };
+
+  return (
+    <Box sx={{ textAlign: "center", marginTop: "50px" }}>
+      <Typography variant="h4" fontWeight={"bold"} gutterBottom>
+        Welcome Back!
+      </Typography>
+      <Typography variant="body1" color="textSecondary" gutterBottom>
+        We're excited to see you again. Please log in to continue managing your
+        tasks and stay productive!
+      </Typography>
+      <form onSubmit={handleLogin} style={{ padding: "5vh 0" }}>
+        <Box sx={{ padding: "1vh 0" }}>
+          <TextField
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            variant="outlined"
+            placeholder="Username"
+          />
+        </Box>
+        <Box>
+          <TextField
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            variant="outlined"
+            placeholder="Password"
+          />
+        </Box>
+        <Button type="submit" sx={{ margin: "2vh 0" }}>
+          Login
+        </Button>
+      </form>
+    </Box>
+  );
+};
+
+const ToDoApp = () => {
   const [toDo, setToDo] = useState("");
   const [toDos, setToDos] = useState(() => {
     const saved = localStorage.getItem("todo_list_data");
@@ -174,6 +258,32 @@ function App() {
       .split(" ");
     return `${dateSplit[0]} ${dateSplit[1]}, ${dateSplit[2]}`;
   };
+
+  useEffect(() => {
+    const touchValue = touchEnd - touchStart;
+    const swipeSensitivity = 150;
+    if (touchEnd !== null) {
+      if (touchValue > swipeSensitivity) {
+        if (bottomNavItemID === "nav_done") {
+          setBottomNavItemID("nav_onGo");
+          setTouchStart(touchEnd);
+        } else if (bottomNavItemID === "nav_onGo") {
+          setBottomNavItemID("nav_drop");
+          setTouchStart(touchEnd);
+        }
+      }
+      if (touchValue < -swipeSensitivity) {
+        if (bottomNavItemID === "nav_drop") {
+          setBottomNavItemID("nav_onGo");
+          setTouchStart(touchEnd);
+        } else if (bottomNavItemID === "nav_onGo") {
+          setBottomNavItemID("nav_done");
+          setTouchStart(touchEnd);
+        }
+      }
+    }
+    return () => setTouchEnd(null);
+  }, [touchEnd, touchStart, bottomNavItemID]);
 
   const handleUserInput = (e) => {
     setToDo(e.target.value);
@@ -223,43 +333,8 @@ function App() {
   const handleTouchMove = (e) => {
     setTouchEnd(e.targetTouches[0].clientX);
   };
-
-  useEffect(() => {
-    const touchValue = touchEnd - touchStart;
-    const swipeSensitivity = 150;
-    if (touchEnd !== null) {
-      if (touchValue > swipeSensitivity) {
-        if (bottomNavItemID === "nav_done") {
-          setBottomNavItemID("nav_onGo");
-          setTouchStart(touchEnd);
-        } else if (bottomNavItemID === "nav_onGo") {
-          setBottomNavItemID("nav_drop");
-          setTouchStart(touchEnd);
-        }
-      }
-      if (touchValue < -swipeSensitivity) {
-        if (bottomNavItemID === "nav_drop") {
-          setBottomNavItemID("nav_onGo");
-          setTouchStart(touchEnd);
-        } else if (bottomNavItemID === "nav_onGo") {
-          setBottomNavItemID("nav_done");
-          setTouchStart(touchEnd);
-        }
-      }
-    }
-    return () => setTouchEnd(null);
-  }, [touchEnd, touchStart, bottomNavItemID]);
-
   return (
-    <Container>
-      <Box sx={{ textAlign: "center", marginBottom: 4 }}>
-        <Typography variant="h3" component="h1" className="gradient-text1">
-          ToDo List
-        </Typography>
-        <Typography variant="h5" component="h2">
-          Hey, it's <span className="gradient-text2">{getDay()?.full}</span>
-        </Typography>
-      </Box>
+    <Box>
       <Box
         component="form"
         onSubmit={handleInputSubmit}
@@ -274,7 +349,7 @@ function App() {
           onChange={handleUserInput}
           placeholder="Plan something . . ."
         />
-        <Stack direction={'column'}>
+        <Stack direction={"column"}>
           <IconButton type="submit">
             <AddIcon />
           </IconButton>
@@ -342,6 +417,21 @@ function App() {
           </Button>
         ))}
       </Box>
+    </Box>
+  );
+};
+
+function App() {
+  const [userAuthenticated, setUserAuthenticated] = useState(false);
+
+  return (
+    <Container>
+      <Header />
+      {userAuthenticated ? (
+        <ToDoApp />
+      ) : (
+        <Login setUserAuthenticated={setUserAuthenticated} />
+      )}
     </Container>
   );
 }

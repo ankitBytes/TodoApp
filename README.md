@@ -1,103 +1,112 @@
-<h1>Todo List Application</h1>
-
-<p>This is a simple Todo List application built using React and Material-UI. It allows users to add, edit, delete, and manage their tasks with different statuses: ongoing, done, and dropped.</p>
+<h1>ToDo List App</h1>
+    <p>This is a simple ToDo List application built using React and Material-UI. The app allows users to manage their tasks by adding, editing, marking as done, and deleting them. It also includes a login feature with hardcoded credentials for demonstration purposes.</p>
 
 <h2>Features</h2>
-<ul>
-    <li>Add new todos</li>
-    <li>Edit existing todos (when ongoing)</li>
-    <li>Mark todos as done</li>
-    <li>Drop and retrieve todos</li>
-    <li>Remove todos permanently</li>
-    <li>Persistent data using localStorage</li>
-    <li>Swipe functionality for navigation between different statuses</li>
-</ul>
-
-<h2>Technologies Used</h2>
-<ul>
-    <li>React</li>
-    <li>Material-UI</li>
-</ul>
+    <ul>
+        <li>Add new tasks</li>
+        <li>Edit existing tasks</li>
+        <li>Mark tasks as done</li>
+        <li>Move tasks back to "on-going"</li>
+        <li>Delete tasks</li>
+        <li>Swipe navigation for different task lists (done, on-going, dropped)</li>
+        <li>Simple login functionality</li>
+    </ul>
 
 <h2>Setup Instructions</h2>
+    <p>Follow these steps to set up and run the application locally:</p>
 
 <h3>Prerequisites</h3>
-<p>Make sure you have the following installed on your machine:</p>
-<ul>
-    <li>Node.js (v14 or above)</li>
-    <li>npm (v6 or above) or yarn (v1.22 or above)</li>
-</ul>
+    <ul>
+        <li>Node.js (version 14 or higher)</li>
+        <li>npm (Node Package Manager) or yarn</li>
+    </ul>
 
 <h3>Installation</h3>
-<ol>
-    <li>
-        <strong>Clone the Repository</strong>
-        <pre><code>git clone https://github.com/your-username/todo-list-app.git
-cd todo-list-app</code></pre>
-    </li>
-    <li>
-        <strong>Install Dependencies</strong>
-        <p>Using npm:</p>
-        <pre><code>npm install</code></pre>
-        <p>Or using yarn:</p>
-        <pre><code>yarn install</code></pre>
-    </li>
-</ol>
+    <ol>
+        <li><p><strong>Clone the repository:</strong></p>
+            <pre><code>git clone https://github.com/your-username/todo-list-app.git
+cd todo-list-app
+            </code></pre>
+        </li>
+        <li><p><strong>Install the dependencies:</strong></p>
+            <p>Using npm:</p>
+            <pre><code>npm install</code></pre>
+            <p>Using yarn:</p>
+            <pre><code>yarn install</code></pre>
+        </li>
+    </ol>
 
 <h3>Running the Application</h3>
-<p>To start the development server, run:</p>
-<p>Using npm:</p>
-<pre><code>npm start</code></pre>
-<p>Or using yarn:</p>
-<pre><code>yarn start</code></pre>
-<p>The application will be available at <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+    <ol>
+        <li><p><strong>Start the development server:</strong></p>
+            <p>Using npm:</p>
+            <pre><code>npm start</code></pre>
+            <p>Using yarn:</p>
+            <pre><code>yarn start</code></pre>
+            <p>The application will start and can be accessed at <code>http://localhost:3000</code> in your web browser.</p>
+        </li>
+    </ol>
 
-<h3>Building for Production</h3>
-<p>To build the application for production, run:</p>
-<p>Using npm:</p>
-<pre><code>npm run build</code></pre>
-<p>Or using yarn:</p>
-<pre><code>yarn build</code></pre>
-<p>The optimized build will be output to the <code>build</code> directory.</p>
+<h3>Usage</h3>
+    <ol>
+        <li><p><strong>Login:</strong></p>
+            <p>Use the following hardcoded credentials to log in:</p>
+            <ul>
+                <li>Username: <code>user</code></li>
+                <li>Password: <code>password</code></li>
+            </ul>
+        </li>
+        <li><p><strong>Manage Tasks:</strong></p>
+            <ul>
+                <li>Add new tasks using the input field and the "Add" button.</li>
+                <li>Edit tasks by clicking the edit icon next to the task.</li>
+                <li>Mark tasks as done by clicking the check icon.</li>
+                <li>Move tasks back to "on-going" by clicking the redo icon.</li>
+                <li>Delete tasks by clicking the delete icon.</li>
+            </ul>
+        </li>
+        <li><p><strong>Swipe Navigation:</strong></p>
+            <p>Swipe left or right to navigate between "done," "on-going," and "dropped" task lists.</p>
+        </li>
+    </ol>
 
-<h3>Deployment</h3>
-<p>The application can be deployed to any static site hosting service, such as GitHub Pages, Vercel, Netlify, etc.</p>
+<h3>Project Structure</h3>
+    <ul>
+        <li><code>src/components</code>: Contains the individual components of the application.</li>
+        <li><code>src/App.js</code>: Main application component.</li>
+        <li><code>src/index.js</code>: Entry point of the application.</li>
+        <li><code>public</code>: Contains the static files for the application.</li>
+    </ul>
 
-<h2>Project Structure</h2>
-<pre><code>todo-list-app/
-├── public/
-│   ├── index.html
-│   └── ...
-├── src/
-│   ├── components/
-│   │   ├── TodoContainer.js
-│   │   └── ...
-│   ├── App.js
-│   ├── index.js
-│   └── ...
-├── .gitignore
-├── package.json
-├── README.md
-└── ...
-</code></pre>
+<h3>Dependencies</h3>
+    <ul>
+        <li>React</li>
+        <li>Material-UI</li>
+        <li><code>@mui/icons-material</code></li>
+    </ul>
 
-<h2>Usage</h2>
-<ol>
-    <li><strong>Adding Todos</strong>: Enter your task in the input field and click the "+" button or press "Enter" to add a newtodo.</li>
-    <li><strong>Editing Todos</strong>: Click the "Edit" button next to an ongoing todo to edit its text. Save the changes byclicking the "Save" button.</li>
-    <li><strong>Marking Todos as Done</strong>: Click the "Check" button next to an ongoing todo to mark it as done.</li>
-    <li><strong>Dropping and Retrieving Todos</strong>: Click the "Close" button next to an ongoing todo to drop it. Retrieve adropped todo by clicking the "Redo" button.</li>
-    <li><strong>Removing Todos</strong>: Click the "Delete" button next to a done or dropped todo to remove it permanently.</li>
-</ol>
+<h3>Contributing</h3>
+    <p>If you would like to contribute to the project, please follow these steps:</p>
+    <ol>
+        <li>Fork the repository.</li>
+        <li>Create a new branch for your feature or bug fix:
+            <pre><code>git checkout -b feature-name</code></pre>
+        </li>
+        <li>Commit your changes:
+            <pre><code>git commit -m "Description of your changes"</code></pre>
+        </li>
+        <li>Push to the branch:
+            <pre><code>git push origin feature-name</code></pre>
+        </li>
+        <li>Create a pull request.</li>
+    </ol>
 
-<h2>Contributing</h2>
-<p>Contributions are welcome! Please open an issue or submit a pull request for any bugs or improvements.</p>
+<h3>License</h3>
+    <p>This project is licensed under the MIT License. See the <code>LICENSE</code> file for details.</p>
 
-<h2>License</h2>
-<p>This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details.</p>
+<h3>Acknowledgments</h3>
+    <ul>
+        <li>Material-UI for the UI components and icons.</li>
+    </ul>
 
-<h2>Acknowledgements</h2>
-<ul>
-    <li><a href="https://reactjs.org/">React</a></li>
-    <li><a href="https://mui.com/">Material-UI</a></li>
-</ul>
+<p>Enjoy using the ToDo List App! If you have any questions or need further assistance, feel free to open an issue on the repository.</p>
